@@ -1,0 +1,59 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.default-removed-class {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+.toolbar {
+  width: fit-content;
+  position: fixed;
+  right: 20px;
+  padding: 10px;
+  background-color: yellow;
+  // clip-path: polygon(
+  //   5% 0%,
+  //   100% 0%,
+  //   100% 100%,
+  //   100% 75%,
+  //   95% 100%,
+  //   0% 100%,
+  //   0% 25%
+  // );
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: red;
+    border-right: 10px solid transparent;
+    width: 25px;
+    height: 25px;
+    transform: rotate(45deg);
+  }
+
+  ul {
+    @extend .default-removed-class;
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    li {
+      user-select: none;
+      cursor: pointer;
+    }
+  }
+}
