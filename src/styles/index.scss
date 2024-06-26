@@ -14,39 +14,19 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.default-removed-class {
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-}
+@import "mixins";
+@import "variables";
 
 .toolbar {
   width: fit-content;
+  height: 2rem !important;
   position: fixed;
   right: 20px;
   padding: 10px;
-  background-color: yellow;
-  // clip-path: polygon(
-  //   5% 0%,
-  //   100% 0%,
-  //   100% 100%,
-  //   100% 75%,
-  //   95% 100%,
-  //   0% 100%,
-  //   0% 25%
-  // );
-  &::before {
-    content: "";
-    position: absolute;
-    background-color: red;
-    border-right: 10px solid transparent;
-    width: 25px;
-    height: 25px;
-    transform: rotate(45deg);
-  }
+  @extend .notched-borders;
 
   ul {
-    @extend .default-removed-class;
+    @extend .default-fresh-class;
     list-style-type: none;
     display: flex;
     gap: 10px;
