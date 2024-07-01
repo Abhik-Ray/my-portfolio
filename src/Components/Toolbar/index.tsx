@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import "./styles.scss";
 
 const Toolbar: FunctionComponent = () => {
   return (
