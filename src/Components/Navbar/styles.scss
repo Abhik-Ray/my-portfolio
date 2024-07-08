@@ -1,0 +1,70 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+
+  h1 {
+    color: transparent;
+    font-size: 3rem;
+    margin: 0px;
+    letter-spacing: 0.5rem;
+    word-spacing: 1rem;
+    font-family: "rysen";
+    animation: neonize 0.5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes neonize {
+  from {
+    text-shadow: 0 0 4px white, 0 0 10px white, 0 0 30px yellow, 0 0 50px yellow,
+      0 0 70px yellow, 0 0 90px yellow;
+  }
+  to {
+    text-shadow: 0 0 2px white, 0 0 5px white, 0 0 15px yellow, 0 0 25px yellow,
+      0 0 35px yellow, 0 0 45px yellow;
+  }
+}
+
+.navigation {
+  font-family: $navigation-font-family;
+  width: fit-content;
+  height: $navigation-height !important;
+  position: fixed;
+  right: $navigation-right;
+  border: $navigation-border;
+  @extend .notched-borders;
+
+  ul {
+    @extend .default-fresh-class;
+    list-style-type: none;
+    display: flex;
+    padding: $navigation-ul-padding;
+    justify-content: flex-end;
+    height: 100%;
+
+    li {
+      user-select: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: large;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: $navigation-li-padding;
+
+      &:last-child {
+        background-color: $navigation-li-hover-color;
+        color: $navigation-text-color;
+        font-family: $navigation-font-family-bold;
+      }
+
+      &:hover {
+        background-color: $navigation-li-hover-color;
+        color: $navigation-text-color;
+      }
+    }
+  }
+}

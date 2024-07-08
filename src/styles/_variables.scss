@@ -1,12 +1,13 @@
 $primary: yellow;
 $primary-text-color: black;
 
-// Toolbar
-$toolbar-height: 2rem;
-$toolbar-right: 20px;
-$toolbar-border: 1px solid $primary;
-$toolbar-ul-padding: 0 0 0 1.25rem;
-$toolbar-li-padding: 0px 0.5rem;
-$toolbar-li-hover-color: $primary;
-$toolbar-text-color: $primary-text-color;
-$toolbar-font-family: "BlenderPro-Bold";
+// Navbar
+$navigation-height: 2rem;
+$navigation-right: 20px;
+$navigation-border: 1px solid $primary;
+$navigation-ul-padding: 0 0 0 1.25rem;
+$navigation-li-padding: 0px 0.5rem;
+$navigation-li-hover-color: $primary;
+$navigation-text-color: $primary-text-color;
+$navigation-font-family: "BlenderPro";
+$navigation-font-family-bold: "BlenderProBold";
