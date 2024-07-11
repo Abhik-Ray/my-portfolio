@@ -1,10 +1,12 @@
 @import "../../styles/mixins";
 @import "../../styles/variables";
+$neon-border-size: 1px;
 
 .navbar-wrapper {
   display: flex;
   justify-content: space-between;
   position: fixed;
+
 
   h1 {
     color: transparent;
@@ -13,18 +15,42 @@
     letter-spacing: 0.5rem;
     word-spacing: 1rem;
     font-family: "rysen";
-    animation: neonize 0.5s ease-in-out infinite alternate;
+    animation: neonize 5s ease-in-out infinite alternate;
+    text-shadow: 
+    0 0 $neon-border-size white, 
+    0 0 calc($neon-border-size + 1px) white,
+    0 0 calc($neon-border-size + 5px) yellow,
+    0 0 calc($neon-border-size + 10px) yellow,
+    0 0 calc($neon-border-size + 15px) yellow,
+    0 0 calc($neon-border-size + 20px) yellow;
   }
 }
 
+@mixin neon-shadow {
+  text-shadow: 
+  0 0 calc($neon-border-size + 1px) white,
+  0 0 calc($neon-border-size + 3px) white,
+  0 0 calc($neon-border-size + 6px) yellow,
+  0 0 calc($neon-border-size + 25px) yellow,  
+  0 0 calc($neon-border-size + 15px) yellow,
+  0 0 calc($neon-border-size + 22px) yellow;
+}
+
 @keyframes neonize {
-  from {
-    text-shadow: 0 0 4px white, 0 0 10px white, 0 0 30px yellow, 0 0 50px yellow,
-      0 0 70px yellow, 0 0 90px yellow;
+  48% {
+    @include neon-shadow;
   }
-  to {
-    text-shadow: 0 0 2px white, 0 0 5px white, 0 0 15px yellow, 0 0 25px yellow,
-      0 0 35px yellow, 0 0 45px yellow;
+  49% {
+    text-shadow: none;
+  }
+  50% {
+    @include neon-shadow;
+  }
+  51% {
+    text-shadow: none;
+  }
+  52% {
+    @include neon-shadow;
   }
 }
 
