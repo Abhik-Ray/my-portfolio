@@ -1,0 +1,18 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.spine {
+    position: fixed;
+    width: 1px;
+    background-color: yellow;
+    height: 80vh;
+    left: 3vw;
+    top: 15vh;
+}
+
+.spinePoint {
+    background-color: yellow;
+    width: 5px;
+    height: 5px;
+    
+}
