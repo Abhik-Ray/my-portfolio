@@ -10,9 +10,7 @@ const SpineTimeline = (props: TimelineProps) => {
     return (
         <div className="spine">
             {props.points.map(point => (
-                <div className='spinePoint'>
-                    {point}
-                </div>
+                <div className='spinePoint' data-text={point}/>
             ))}
         </div>
     )

@@ -4,15 +4,28 @@
 .spine {
     position: fixed;
     width: 1px;
-    background-color: yellow;
+    background-color: gray;
     height: 80vh;
     left: 3vw;
     top: 15vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
 
 .spinePoint {
     background-color: yellow;
-    width: 5px;
-    height: 5px;
-    
+    width: 3px;
+    height: 3px;
+    right: 150%;
+    border-radius: 300px;
+    position: relative;
+}
+
+.spinePoint::after {
+    content: attr(data-text);
+    font-family: $primary-font-family;
+    position: absolute;
+    left: 150%;
+    top: -150%;
 }

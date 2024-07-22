@@ -9,7 +9,7 @@ const App: FunctionComponent = () => {
     <div className="app">
       <Navbar />
       <SpineTimeline 
-        points={['2018', '2022', '2024']} 
+        points={['2018', '2022', '2024', '2077']} 
         selectedPoint={0} 
         selectedPointProgress={0} 
       />
