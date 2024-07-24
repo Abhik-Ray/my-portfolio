@@ -4,7 +4,7 @@ import "./styles.scss";
 const Navbar: FunctionComponent = () => {
   return (
     <div className="navbar-wrapper">
-      <h1>Abhik Ray</h1>
+      {/* <h1>Abhik Ray</h1> */}
       <div className="navigation">
         <ul>
           <li>About Me</li>
