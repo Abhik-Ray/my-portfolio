@@ -39,7 +39,7 @@ const SpineTimeline = (props: TimelineProps) => {
     return (
         <ul className="spine">
             {props.points.map((point, index) => (
-                <li key={`${index}-spine`} className='spinePoint' data-label={point} data-progress={100}>
+                <li key={`${index}-spine`} className='spinePoint'>
                     <label>{point}</label>
                 </li>
             ))}
