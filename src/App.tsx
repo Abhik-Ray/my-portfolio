@@ -10,8 +10,8 @@ const App: FunctionComponent = () => {
       <Navbar />
       <SpineTimeline 
         points={['2018', '2022', '2024', '2032', '2077']} 
-        selectedPoint={0} 
-        selectedPointProgress={0} 
+        selectedPoint={3}
+        selectedPointProgress={50} 
       />
       {/* <Typewriter
         options={{
