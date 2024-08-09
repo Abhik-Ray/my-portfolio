@@ -1,12 +1,26 @@
 @import "../../styles/mixins";
 @import "../../styles/variables";
-$neon-border-size: 1px;
+$neon-border-size: 0.5px;
+
+@mixin default-shadow {
+  text-shadow: 0 0 $neon-border-size white,
+    0 0 calc($neon-border-size + 0.5px) white,
+    0 0 calc($neon-border-size + 2.5px) yellow,
+    0 0 calc($neon-border-size + 5px) yellow,
+    0 0 calc($neon-border-size + 7.5px) yellow,
+    0 0 calc($neon-border-size + 10px) yellow;
+  color: white;
+}
+
+@mixin shadow-2 {
+  text-shadow: none;
+  color: yellow;
+}
 
 .navbar-wrapper {
   display: flex;
   justify-content: space-between;
   position: fixed;
-
 
   h1 {
     color: transparent;
@@ -15,28 +29,25 @@ $neon-border-size: 1px;
     letter-spacing: 0.5rem;
     word-spacing: 1rem;
     font-family: "rysen";
-    animation: neonize 5s ease-in-out infinite alternate;
-    text-shadow: 
-    0 0 $neon-border-size white, 
-    0 0 calc($neon-border-size + 1px) white,
-    0 0 calc($neon-border-size + 5px) yellow,
-    0 0 calc($neon-border-size + 10px) yellow,
-    0 0 calc($neon-border-size + 15px) yellow,
-    0 0 calc($neon-border-size + 20px) yellow;
+    // animation: neonize 5s ease-in-out infinite alternate;
+    @include shadow-2;
   }
 }
 
 @mixin neon-shadow {
-  text-shadow: 
-  0 0 calc($neon-border-size + 1px) white,
-  0 0 calc($neon-border-size + 3px) white,
-  0 0 calc($neon-border-size + 6px) yellow,
-  0 0 calc($neon-border-size + 25px) yellow,  
-  0 0 calc($neon-border-size + 15px) yellow,
-  0 0 calc($neon-border-size + 22px) yellow;
+  text-shadow: 0 0 calc($neon-border-size + 0.5px) white,
+    0 0 calc($neon-border-size + 0.5px) white,
+    0 0 calc($neon-border-size + 2.5px) yellow,
+    0 0 calc($neon-border-size + 5px) yellow,
+    0 0 calc($neon-border-size + 7.5px) yellow,
+    0 0 calc($neon-border-size + 10px) yellow;
+  color: white;
 }
 
 @keyframes neonize {
+  0% {
+    @include shadow-2;
+  }
   48% {
     @include neon-shadow;
   }
@@ -51,6 +62,9 @@ $neon-border-size: 1px;
   }
   52% {
     @include neon-shadow;
+  }
+  100% {
+    @include shadow-2;
   }
 }
 

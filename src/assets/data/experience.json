@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "name": "Experience",
+    "dscription": "All the work experience I have gathered till date"
+  },
+  "data": [
+    {
+      "id": 0,
+      "name": "Internship1",
+      "description": "Internship with HighRadius as a full stack developer",
+      "companyName": "HighRadius",
+      "jobTitle": "Software Intern",
+      "startTime": {
+        "year": "2021",
+        "month": "01",
+        "text": "Jan 2021"
+      },
+      "endTime": {
+        "year": "2021",
+        "month": "03",
+        "text": "Mar 2021"
+      },
+      "languages": ["Javascript", "Python"],
+      "technologies": ["React", "numpy", "pandas", "Jyupiter Notebooks"]
+    },
+    {
+      "id": 1,
+      "name": "Internship2",
+      "description": "Internship with IBI Group as a Front End Developer",
+      "companyName": "Arcadis IBI Group",
+      "jobTitle": "Software Intern",
+      "startTime": {
+        "year": "2021",
+        "month": "10",
+        "text": "Oct 2021"
+      },
+      "endTime": {
+        "year": "2022",
+        "month": "07",
+        "text": "July 2022"
+      },
+      "languages": ["Javascript", "Typescript"],
+      "technologies": ["React"]
+    },
+    {
+      "id": 2,
+      "name": "Job3",
+      "description": "Full time developer with Arcadis IBI as a Front End Developer",
+      "companyName": "Arcadis IBI Group",
+      "jobTitle": "Front End Developer",
+      "startTime": {
+        "year": "2022",
+        "month": "07",
+        "text": "July 2022"
+      },
+      "endTime": null,
+      "languages": ["Javascript", "Typescript"],
+      "technologies": [
+        "React",
+        "React Native",
+        "npm",
+        "Vite",
+        "Rollup",
+        "Vitest",
+        "Jest",
+        ".NET",
+        "Sentry",
+        "Snyk",
+        "Teams App",
+        "Leaflet",
+        "MapLibre",
+        "i18next",
+        "OpenStreetMap"
+      ]
+    }
+  ]
+}

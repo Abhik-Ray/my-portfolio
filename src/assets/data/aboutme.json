@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "About Me",
+    "description": "Short note on oneself introducing oneself"
+  },
+  "data": [
+    {
+      "name": "Short Intro",
+      "text": "I'm Abhik, a Front End Developer based in %location%",
+      "context": {
+        "%location%": ["Hyderabad", "Kolkata", "India"]
+      }
+    }
+  ]
+}
