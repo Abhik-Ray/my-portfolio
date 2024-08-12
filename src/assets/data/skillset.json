@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "name": "Skillset",
+    "description": "List of all the skillset"
+  },
+  "data": [
+    {
+      "id": 0,
+      "name": "React",
+      "description": "Building various Front-End websites and npm libraries using React",
+      "proficiency": 8
+    },
+    {
+      "id": 1,
+      "name": "Vite",
+      "description": "Creating an optimal environment for development, testing and deployment and adjusting for tools like Snyk, Sentry, Jenkins etc.",
+      "proficiency": 8
+    },
+    {
+      "id": 2,
+      "name": "React Native",
+      "description": "Building Mobile apps for both Android and iOS using the React Native Framework",
+      "proficiency": 7
+    },
+    {
+      "id": 3,
+      "name": "Blender",
+      "description": "Modeling, Sculpting, UV Editing, Texture Painting, Shading and Rendering using Blenders 3D engine",
+      "proficiency": 7
+    },
+    {
+      "id": 4,
+      "name": "Unity",
+      "description": "Creating cool and interactive 2D/3D games using the Unity Engine",
+      "proficiency": 7
+    },
+    {
+      "id": 5,
+      "name": "Flutter",
+      "description": "Making responsive apps using Dart and the Flutter SDK in Android Studio",
+      "proficiency": 5
+    },
+    {
+      "id": 6,
+      "name": "Android Studio",
+      "description": "Making Apps using basic Kotlin and the Android SDK",
+      "proficiency": 5
+    },
+    {
+      "id": 7,
+      "name": "Unreal Engine",
+      "description": "Making 3D games using Epic's Unreal Engine",
+      "proficiency": 4
+    },
+    {
+      "id": 8,
+      "name": "Adobe Illustrator",
+      "description": "Creating SVG Logos and Designs to use with some other Application",
+      "proficiency": 5
+    },
+    {
+      "id": 9,
+      "name": "Django",
+      "description": "Creating dynamic web pages using Django and django templates",
+      "proficiency": 5
+    },
+    {
+      "id": 10,
+      "name": "Git",
+      "description": "Using Version Control system and hooks to ensure code quality and robustness",
+      "proficiency": 7
+    },
+    {
+      "id": 11,
+      "name": "Python Notebooks",
+      "description": "Using Python notebooks to use technologies like TensorFlow, using ML models and automating boring tasks",
+      "proficiency": 7
+    },
+    {
+      "id": 12,
+      "name": "GNU Octave",
+      "description": "Genarating basic Supervised Machine Learning Models",
+      "proficiency": 4
+    }
+  ]
+}

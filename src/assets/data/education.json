@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "Education",
+    "description": "Where I lived and learned"
+  },
+  "data": [
+    {
+      "id": 0,
+      "name": "Schooling",
+      "description": "Foundational and secondary education from class 1 to class 12",
+      "schoolName": "Kendriya Vidyalaya No.1 Saltlake",
+      "startTime": {
+        "year": "2008"
+      },
+      "endTime": {
+        "year": "2018"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Bachelors",
+      "description": "Bachelors Degree of Technology",
+      "schoolName": "Kalinga Institute of Industrial Technology",
+      "startTime": {
+        "year": "2018"
+      },
+      "endTime": {
+        "year": "2022"
+      }
+    }
+  ]
+}
