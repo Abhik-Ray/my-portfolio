@@ -1,54 +1,39 @@
 'use client';
 
-import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-export default function GridBG() {
+import { useRef } from "react";
+
+interface GridBGProps {
+    color?: 'primary' | 'foreground';
+}
+
+export default function GridBG({ color = 'primary' }: GridBGProps) {
     const svgRef = useRef<SVGSVGElement | null>(null);
 	const maskCircleRef = useRef<SVGCircleElement | null>(null);
-
-	// useEffect(() => {
-	// 	const svg = svgRef.current;
-	// 	const circle = maskCircleRef.current;
-	// 	if (!svg || !circle) return; // restore guard
-
-	// 	let rafId: number | null = null;
-	// 	let lastClientX = 0;
-	// 	let lastClientY = 0;
-
-	// 	function updateCircleFromLastPointer() {
-	// 		rafId = null;
-	// 		// Convert client coords to SVG user-space coords (handles scaling/viewBox)
-	// 		const rect = svg.getBoundingClientRect();
-	// 		const viewBox = svg.viewBox.baseVal; // viewBox.width/height exist if declared
-
-	// 		// Map client pixel -> svg coordinate
-	// 		const svgX = ((lastClientX - rect.left) / rect.width) * viewBox.width + viewBox.x;
-	// 		const svgY = ((lastClientY - rect.top) / rect.height) * viewBox.height + viewBox.y;
-
-	// 		circle.setAttribute("cx", String(svgX));
-	// 		circle.setAttribute("cy", String(svgY));
-	// 	}
-
-	// 	function onMove(e: PointerEvent) {
-	// 		lastClientX = e.clientX;
-	// 		lastClientY = e.clientY;
-	// 		if (rafId == null) rafId = requestAnimationFrame(updateCircleFromLastPointer);
-	// 	}
-
-	// 	// pointermove works for touch + mouse
-	// 	window.addEventListener("pointermove", onMove);
-	// 	return () => {
-	// 		window.removeEventListener("pointermove", onMove);
-	// 		if (rafId != null) cancelAnimationFrame(rafId);
-	// 	};
-	// }, []);
+    
+    // Track scroll progress starting after the Hero section (first screen height)
+    const { scrollYProgress } = useScroll({
+        offset: ["100vh", "end"]
+    });
+    
+    // Define the color values
+    const primaryColor = "oklch(0.87 0.148144 202.8755)";
+    const foregroundColor = "oklch(0.5972 0.2351 25.35)";
+    
+    // Interpolate between colors based on scroll progress
+    const interpolatedColor = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [primaryColor, foregroundColor]
+    );
     
     return (
         <div className="">
-        <svg
+        <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
-		  ref={svgRef} // attach the ref so calculations use the correct element
+		  ref={svgRef}
           viewBox="0 0 800 800"
           opacity="1"
           className="w-max h-max"
@@ -65,15 +50,29 @@ export default function GridBG() {
                 />
                 </mask>
                 <pattern id="h-lines" width="100" height="100" patternUnits="userSpaceOnUse">
-                    <line x1="0" y1="100" x2="100%" y2="100" strokeWidth="0.5" />
-                    <line x1="100" y1="0" x2="100" y2="100" strokeWidth="0.5" />
+                    <motion.line 
+                        x1="0" 
+                        y1="100" 
+                        x2="100%" 
+                        y2="100" 
+                        stroke={interpolatedColor}
+                        strokeWidth="0.5" 
+                    />
+                    <motion.line 
+                        x1="100" 
+                        y1="0" 
+                        x2="100" 
+                        y2="100" 
+                        stroke={interpolatedColor}
+                        strokeWidth="0.5" 
+                    />
                 </pattern>
             </defs>
             {/* base background at 0.5 opacity (no mask) */}
-            <rect id="bgrect-base" width="100%" height="100%" fill="url(#h-lines)" opacity={0.3} />
+            <rect id="bgrect-base" width="100%" height="100%" fill="url(#h-lines)" opacity={0.4} />
             {/* top layer masked by circle at full opacity */}
             <rect id="bgrect-mask" width="100%" height="100%" fill="url(#h-lines)" mask="url(#cursorMask)" opacity={0.5} />
-        </svg>
+        </motion.svg>
         </div>
     );
 }
