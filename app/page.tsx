@@ -1,5 +1,6 @@
 "use client";
 
+import Folder from "@/components/Folder";
 import GridBG from "@/components/GridBG";
 import Hero from "@/components/Hero";
 
@@ -26,6 +27,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold">Color transition complete!</h2>
         </div>
       </div>
+      <Folder/>
     </main>
   );
 }

@@ -12,9 +12,9 @@ export default function GridBG({ color = 'primary' }: GridBGProps) {
     const svgRef = useRef<SVGSVGElement | null>(null);
 	const maskCircleRef = useRef<SVGCircleElement | null>(null);
     
-    // Track scroll progress starting after the Hero section (first screen height)
+    // Track scroll progress from start until hero parent div is completely off screen
     const { scrollYProgress } = useScroll({
-        offset: ["100vh", "end"]
+        offset: ["0vh", "100vh"]
     });
     
     // Define the color values
