@@ -1,8 +1,10 @@
 "use client";
 
-import Folder from "@/components/Folder";
+import Experience from "@/components/Experience";
 import GridBG from "@/components/GridBG";
 import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
@@ -13,7 +15,10 @@ export default function Home() {
       <div className="relative z-10 h-screen flex items-center justify-center">
         <Hero />
       </div>
-      <Folder/>
+      <Experience />
+      <Skills />
+      <Projects />
+      {/* <Folder/> */}
       {/* <div id="footer" className="h-screen"></div> */}
     </main>
   );
