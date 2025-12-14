@@ -1,0 +1,1 @@
+export const HOME_HEIGHT = 1080 * 10;
