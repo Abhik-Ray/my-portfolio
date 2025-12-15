@@ -126,6 +126,22 @@
   stroke: var(--primary);
 } */
 
+.modal-cut {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%);
+}
+
+.modal-cut::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: var(--foreground);
+  right: -1px;
+  bottom: -1px;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  right: -1px;  bottom: -1px;  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+} 
+
 .hero-card {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0% 100%);
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import GridBG from "@/components/GridBG";
 import Hero from "@/components/Hero";
@@ -18,6 +19,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Projects />
+      <Contact />
       {/* <Folder/> */}
       {/* <div id="footer" className="h-screen"></div> */}
     </main>
