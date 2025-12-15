@@ -22,29 +22,38 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section>
-      <header className="ml-10 mb-10">
-        <h1 className="text-9xl font-thin">Skills</h1>
-      </header>
-      {/* Skills component */}
-      {skills.length === 0 ? null : (
-        <ul className="grid grid-cols-4 gap-20 mx-auto w-fit">
+    <section className="flex flex-col items-center">
+      <div className="w-fit">
+        <header className="mb-10">
+          <h1 className="text-8xl font-thin">Skills</h1>
+        </header>
+        {/* Skills component */}
+        {skills.length === 0 ? null : (
+          <ul className="grid grid-cols-4 gap-20">
           {skills.map((skill) => (
             <motion.li
               key={skill.name}
               className="aspect-square min-w-40 min-h-40 max-w-50 max-h-50 border border-foreground flex flex-col items-center justify-center p-4 gap-3 relative overflow-hidden modal-cut"
-              whileHover={{
-                backgroundColor: 'oklch(0.5972 0.2351 25.35 / 0.2)',
-              }}
-              transition={{ duration: 0.3 }}
+              initial="initial"
+              whileHover="hover"
             >
+              {/* Fill animation overlay */}
+              <motion.div
+                className="absolute inset-0 bg-[oklch(0.5972_0.2351_25.35/0.2)] origin-left"
+                variants={{
+                  initial: { scaleX: 0 },
+                  hover: { scaleX: 1 }
+                }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              />
+              
               {/* Plus icons */}
-              <Plus className="absolute top-2 left-2 w-4 h-4" />
-              <Plus className="absolute top-2 right-2 w-4 h-4" />
-              <Plus className="absolute bottom-2 left-2 w-4 h-4" />
+              <Plus className="absolute top-2 left-2 w-4 h-4 z-10" />
+              <Plus className="absolute top-2 right-2 w-4 h-4 z-10" />
+              <Plus className="absolute bottom-2 left-2 w-4 h-4 z-10" />
               
               <div 
-                className="w-16 h-16 flex items-center justify-center"
+                className="w-16 h-16 flex items-center justify-center z-10"
                 style={{
                   backgroundColor: 'var(--foreground)',
                   WebkitMaskImage: `url(${skill.logo})`,
@@ -57,11 +66,12 @@ const Skills: React.FC = () => {
                   maskPosition: 'center',
                 }}
               />
-              <span className="text-center text-sm">{skill.name}</span>
+              <span className="text-center text-sm z-10">{skill.name}</span>
             </motion.li>
           ))}
         </ul>
-      )}
+        )}
+      </div>
     </section>
   );
 };
