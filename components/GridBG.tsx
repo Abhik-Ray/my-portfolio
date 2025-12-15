@@ -1,8 +1,7 @@
 'use client';
 
-import { motion, useScroll, useTransform } from "framer-motion";
-
-import { useRef } from "react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 interface GridBGProps {
     color?: 'primary' | 'foreground';
@@ -11,6 +10,28 @@ interface GridBGProps {
 export default function GridBG({ color = 'primary' }: GridBGProps) {
     const svgRef = useRef<SVGSVGElement | null>(null);
 	const maskCircleRef = useRef<SVGCircleElement | null>(null);
+    
+    // Track mouse position
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    
+    // Smooth spring animation for pattern offset
+    const patternX = useSpring(mouseX, { stiffness: 50, damping: 30 });
+    const patternY = useSpring(mouseY, { stiffness: 50, damping: 30 });
+    
+    // Map mouse position to pattern offset (-50 to 50 for subtle movement)
+    const x = useTransform(patternX, [0, window.innerWidth], [-50, 50]);
+    const y = useTransform(patternY, [0, window.innerHeight], [-50, 50]);
+    
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
+        };
+        
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [mouseX, mouseY]);
     
     // Track scroll progress from start until hero parent div is completely off screen
     const { scrollYProgress } = useScroll({
@@ -49,7 +70,13 @@ export default function GridBG({ color = 'primary' }: GridBGProps) {
                     fill="white"
                 />
                 </mask>
-                <pattern id="h-lines" width="100" height="100" patternUnits="userSpaceOnUse">
+                <motion.pattern 
+                    id="h-lines" 
+                    width="100" 
+                    height="100" 
+                    patternUnits="userSpaceOnUse"
+                    style={{ x, y }}
+                >
                     <motion.line 
                         x1="0" 
                         y1="100" 
@@ -66,7 +93,7 @@ export default function GridBG({ color = 'primary' }: GridBGProps) {
                         stroke={interpolatedColor}
                         strokeWidth="0.5" 
                     />
-                </pattern>
+                </motion.pattern>
             </defs>
             {/* base background at 0.5 opacity (no mask) */}
             <rect id="bgrect-base" width="100%" height="100%" fill="url(#h-lines)" opacity={0.4} />
