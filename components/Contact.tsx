@@ -5,8 +5,7 @@ import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    subject: "",
     message: "",
   });
 
@@ -16,14 +15,20 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
     
-    // Simulate sending
+    // Create mailto link
+    const mailtoLink = `mailto:abhik.raya01@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(formData.message)}`;
+    
+    // Open mail client in new window
+    window.open(mailtoLink, '_blank');
+    
+    // Update status
     setTimeout(() => {
       setStatus("sent");
       setTimeout(() => {
         setStatus("idle");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ subject: "", message: "" });
       }, 3000);
-    }, 1500);
+    }, 500);
   };
 
   const handleChange = (
@@ -43,13 +48,13 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <div className="text-cyan-400 text-sm font-mono mb-2">
+          <div className="text-primary text-sm font-mono mb-2">
             {">"} INITIALIZE_CONNECTION
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 font-mono mb-2">
             CONTACT.EXE
           </h2>
-          <div className="h-[2px] w-32 bg-cyan-400 relative">
+          <div className="h-0.5 w-32 bg-primary relative">
             <motion.div
               className="absolute h-full bg-yellow-400"
               initial={{ width: 0 }}
@@ -69,16 +74,16 @@ export default function Contact() {
           className="relative"
         >
           {/* Corner brackets */}
-          <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-cyan-400" />
-          <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-cyan-400" />
-          <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-cyan-400" />
-          <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-cyan-400" />
+          <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary" />
+          <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary" />
+          <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary" />
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary" />
 
           {/* Main content */}
-          <div className="bg-black border border-cyan-400 p-8 md:p-12 relative overflow-hidden">
+          <div className="bg-black border border-primary p-8 md:p-12 relative overflow-hidden">
             {/* Scanline effect */}
             <motion.div
-              className="absolute top-0 left-0 w-full h-[2px] bg-cyan-400 opacity-30"
+              className="absolute top-0 left-0 w-full h-0.5 bg-primary opacity-30"
               animate={{ y: [0, 600] }}
               transition={{
                 duration: 3,
@@ -102,43 +107,23 @@ export default function Contact() {
             {/* Form */}
             <form onSubmit={handleSubmit} className="relative z-10">
               <div className="space-y-6">
-                {/* Name field */}
+                {/* Subject field */}
                 <div>
                   <label
-                    htmlFor="name"
-                    className="block text-cyan-400 text-sm font-mono mb-2"
+                    htmlFor="subject"
+                    className="block text-primary text-sm font-mono mb-2"
                   >
-                    {">"} NAME_INPUT:
+                    {">"} SUBJECT_LINE:
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b-2 border-cyan-400 text-yellow-400 px-3 py-2 font-mono focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-gray-600"
-                    placeholder="Enter designation..."
-                  />
-                </div>
-
-                {/* Email field */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-cyan-400 text-sm font-mono mb-2"
-                  >
-                    {">"} EMAIL_ADDRESS:
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-transparent border-b-2 border-cyan-400 text-yellow-400 px-3 py-2 font-mono focus:outline-none focus:border-yellow-400 transition-colors placeholder:text-gray-600"
-                    placeholder="Enter network_id..."
+                    className="w-full bg-transparent border-b-2 border-primary text-primary px-3 py-2 font-mono focus:outline-none focus:border-yellow-400 focus:text-yellow-400 transition-colors placeholder:text-gray-600"
+                    placeholder="Enter subject..."
                   />
                 </div>
 
@@ -146,7 +131,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-cyan-400 text-sm font-mono mb-2"
+                    className="block text-primary text-sm font-mono mb-2"
                   >
                     {">"} MESSAGE_BUFFER:
                   </label>
@@ -157,7 +142,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full bg-transparent border-2 border-cyan-400 text-yellow-400 px-3 py-2 font-mono focus:outline-none focus:border-yellow-400 transition-colors resize-none placeholder:text-gray-600"
+                    className="w-full bg-transparent border-2 border-primary text-primary px-3 py-2 font-mono focus:outline-none focus:border-yellow-400 focus:text-yellow-400 transition-colors resize-none placeholder:text-gray-600"
                     placeholder="Input transmission data..."
                   />
                 </div>
@@ -169,10 +154,10 @@ export default function Contact() {
                     disabled={status !== "idle"}
                     whileHover={{ scale: status === "idle" ? 1.02 : 1 }}
                     whileTap={{ scale: status === "idle" ? 0.98 : 1 }}
-                    className="relative px-8 py-3 border-2 border-cyan-400 text-cyan-400 font-mono font-bold overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative px-8 py-3 border-2 border-primary text-primary font-mono font-bold overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {/* Button hover effect */}
-                    <span className="absolute inset-0 bg-cyan-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                    <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
                     <span className="relative z-10 group-hover:text-black transition-colors duration-300">
                       {status === "idle" && "[SEND_TRANSMISSION]"}
                       {status === "sending" && "[TRANSMITTING...]"}
@@ -194,15 +179,15 @@ export default function Contact() {
             </form>
 
             {/* Bottom status bar */}
-            <div className="mt-8 pt-4 border-t border-cyan-400 border-opacity-30 flex justify-between items-center text-xs font-mono">
+            <div className="mt-8 pt-4 border-t border-primary border-opacity-30 flex justify-between items-center text-xs font-mono">
               <div className="text-gray-600">
-                STATUS: <span className="text-cyan-400">ONLINE</span>
+                STATUS: <span className="text-primary">ONLINE</span>
               </div>
               <div className="text-gray-600">
                 PROTOCOL: <span className="text-yellow-400">HTTPS/2.0</span>
               </div>
               <div className="text-gray-600">
-                ENCRYPTION: <span className="text-cyan-400">ACTIVE</span>
+                ENCRYPTION: <span className="text-primary">ACTIVE</span>
               </div>
             </div>
           </div>
@@ -216,17 +201,17 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-center font-mono"
         >
-          <div className="border border-cyan-400 border-opacity-30 p-4">
+          <div className="border border-primary border-opacity-30 p-4">
             <div className="text-gray-600 text-xs mb-1">DIRECT_LINE</div>
-            <div className="text-cyan-400 text-sm">contact@email.com</div>
+            <div className="text-primary text-sm">abhik.raya01@gmail.com</div>
           </div>
-          <div className="border border-cyan-400 border-opacity-30 p-4">
+          <div className="border border-primary border-opacity-30 p-4">
             <div className="text-gray-600 text-xs mb-1">LOCATION</div>
-            <div className="text-yellow-400 text-sm">SECTOR_7</div>
+            <div className="text-yellow-400 text-sm">KOLKATA | HYDERBAD</div>
           </div>
-          <div className="border border-cyan-400 border-opacity-30 p-4">
+          <div className="border border-primary border-opacity-30 p-4">
             <div className="text-gray-600 text-xs mb-1">RESPONSE_TIME</div>
-            <div className="text-cyan-400 text-sm">{"<24H"}</div>
+            <div className="text-primary text-sm">{"<24H"}</div>
           </div>
         </motion.div>
       </div>
