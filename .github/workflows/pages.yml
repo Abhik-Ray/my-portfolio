@@ -41,6 +41,9 @@ jobs:
         id: setup_pages
         uses: actions/configure-pages@v5
 
+      - name: Create .env file
+        run: echo "PAGES_BASE_PATH=/portfolio" > .env
+
       - name: Restore cache
         uses: actions/cache@v4
         with:
