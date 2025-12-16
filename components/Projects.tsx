@@ -1,5 +1,8 @@
 'use client'
 
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
@@ -9,17 +12,20 @@ const Projects: React.FC = () => {
         {
             "title": 'Skin Cancer Detection using CNN',
             "text": "A CNN-based system to classify skin lesion images with a simple web interface for image upload and result visualization.",
-            "image": '/dummy.png',
+            "images": ['/projects/CNN1.png', '/projects/CNN2.png', '/projects/CNN3.png'],
+            "aspect": "960/546",
         },
         {
             "title": 'My Movie List',
             "text": "A cross-platform mobile app using Flutter with a clean, responsive UI and core application logic.",
-            "image": '/dummy.png',
+            "images": ['/projects/MML1.png', '/projects/MML2.png', '/projects/MML3.png', '/projects/MML4.png'],
+            "aspect": "270/540",
         },
         {
             "title": 'React Dead Simple Stopwatch Hook',
             "text": "A simple and reusable React hook for creating a stopwatch.",
-            "image": '/dummy.png',
+            "images": ['/projects/NPM1.png'],
+            "aspect": "1000/640"
         }
     ];
 
@@ -40,14 +46,44 @@ const Projects: React.FC = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                                 viewport={{ once: true, amount: 0.3 }}
-                                className={`relative aspect-video w-full ${!isEven ? 'lg:order-2' : ''}`}
+                                className={`${!isEven ? 'lg:order-2' : ''}`}
                             >
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover rounded-lg"
-                                />
+                                <Carousel 
+                                    className="w-full px-16" 
+                                    opts={{ loop: true }} 
+                                    plugins={[
+                                        Autoplay({
+                                            delay: 3000,
+                                            stopOnInteraction: true,
+                                            stopOnMouseEnter: true,
+                                        })
+                                    ]}
+                                    style={project.aspect === "270/540" ? { maxWidth: "calc(270px + 8rem)", margin: "0 auto" } : {}}
+                                >
+                                    <CarouselContent>
+                                        {project.images.map((img, imgIndex) => (
+                                            <CarouselItem key={imgIndex}>
+                                                <div className="relative mx-auto w-full flex items-center justify-center" style={{ aspectRatio: `${project.aspect}` }}>
+                                                    <div className="relative w-full h-full">
+                                                        <Image
+                                                            src={img}
+                                                            alt={`${project.title} - ${imgIndex + 1}`}
+                                                            fill
+                                                            className="object-contain border-foreground border-2"
+                                                            sizes="(max-width: 768px) 100vw, 960px"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </CarouselItem>
+                                        ))}
+                                    </CarouselContent>
+                                    {project.images.length > 1 && (
+                                        <>
+                                            <CarouselPrevious className="rounded-none" />
+                                            <CarouselNext className="rounded-none" />
+                                        </>
+                                    )}
+                                </Carousel>
                             </motion.div>
 
                             {/* Text Section */}

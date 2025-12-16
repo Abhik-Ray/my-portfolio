@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -53,9 +54,18 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, className }), "relative overflow-hidden *:relative *:z-10")}
       {...props}
-    />
+    >
+      {/* Fill animation overlay */}
+      <motion.div
+        className="absolute inset-0 bg-[oklch(0.5972_0.2351_25.35/0.2)] origin-left pointer-events-none"
+        initial={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      />
+      {props.children}
+    </Comp>
   )
 }
 
