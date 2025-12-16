@@ -2,13 +2,14 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Abhik-Ray/my-portfolio",
+  "homepage": "https://github.com/Abhik-Ray/portfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:gh": "set PAGES_BASE_PATH=/portfolio&& next build",
     "start": "next start",
     "lint": "eslint",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:gh",
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
