@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Plus } from "lucide-react";
 import React from "react";
+import { getImagePath } from "@/lib/getImagePath";
 import { motion } from "framer-motion";
 
 const Skills: React.FC = () => {
@@ -56,8 +57,8 @@ const Skills: React.FC = () => {
                 className="w-16 h-16 flex items-center justify-center z-10"
                 style={{
                   backgroundColor: 'var(--foreground)',
-                  WebkitMaskImage: `url(${skill.logo})`,
-                  maskImage: `url(${skill.logo})`,
+                  WebkitMaskImage: `url(${getImagePath(skill.logo)})`,
+                  maskImage: `url(${getImagePath(skill.logo)})`,
                   WebkitMaskSize: 'contain',
                   maskSize: 'contain',
                   WebkitMaskRepeat: 'no-repeat',
