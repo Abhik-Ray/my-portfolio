@@ -74,7 +74,7 @@ const Experience: React.FC = () => {
           <motion.li className="relative md:pl-12" variants={itemVariants}>
             <div 
               role="article" 
-              className="p-6 border border-foreground bg-black/40 backdrop-blur-sm relative overflow-hidden modal-cut"
+              className="p-6 border border-foreground bg-black backdrop-blur-sm relative overflow-hidden modal-cut"
             >
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-foreground" />
@@ -129,7 +129,7 @@ const Experience: React.FC = () => {
           <motion.li className="relative md:pl-12" variants={itemVariants}>
             <div 
               role="article" 
-              className="p-6 border border-foreground bg-black/40 backdrop-blur-sm relative overflow-hidden modal-cut"
+              className="p-6 border border-foreground bg-black backdrop-blur-sm relative overflow-hidden modal-cut"
             >
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-foreground" />
@@ -160,7 +160,7 @@ const Experience: React.FC = () => {
           <motion.li className="relative md:pl-12" variants={itemVariants}>
             <div 
               role="article" 
-              className="p-6 border border-foreground bg-black/40 backdrop-blur-sm relative overflow-hidden modal-cut"
+              className="p-6 border border-foreground bg-black backdrop-blur-sm relative overflow-hidden modal-cut"
             >
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-foreground" />
