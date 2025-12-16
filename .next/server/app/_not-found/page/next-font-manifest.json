@@ -1,0 +1,11 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/app/_not-found/page": [
+      "static/media/ef1484efef1c9752-s.p.b56aead1.woff2",
+      "static/media/Rajdhani_Semibold-s.p.7b8337f1.ttf"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}
