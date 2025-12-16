@@ -1,3 +1,5 @@
+"use client";
+
 export default function imageLoader({
   src,
 }: {
@@ -5,6 +7,10 @@ export default function imageLoader({
   width?: number;
   quality?: number;
 }) {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  return `${basePath}${src}`;
+  // For local development
+  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    return src;
+  }
+  // For GitHub Pages deployment
+  return `/portfolio${src}`;
 }
