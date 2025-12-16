@@ -11,7 +11,7 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 const rajdhaniSemibold = localFont({
-  src: "../public/Rajdhani-Semibold.ttf",
+  src: "../public/Rajdhani-SemiBold.ttf",
 });
 
 export const metadata: Metadata = {
