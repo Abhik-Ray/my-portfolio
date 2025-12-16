@@ -6,12 +6,15 @@ import GridBG from "@/components/GridBG";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import { useRef } from "react";
 
 export default function Home() {
+  const contactRef = useRef<HTMLDivElement>(null);
+
   return (
     <main className="relative">
       <div className="fixed inset-0 w-screen h-screen">
-        <GridBG color="primary"/>
+        <GridBG contactRef={contactRef}/>
       </div>
       <div className="relative z-10 h-screen flex items-center justify-center">
         <Hero />
@@ -19,9 +22,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Projects />
-      <Contact />
-      {/* <Folder/> */}
-      {/* <div id="footer" className="h-screen"></div> */}
+      <Contact ref={contactRef} />
     </main>
   );
 }

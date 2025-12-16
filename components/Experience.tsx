@@ -32,9 +32,9 @@ const Experience: React.FC = () => {
   return (
     <section
       aria-label="Experience"
-      className="relative py-16 px-6 flex justify-center"
+      className="relative py-20"
     >
-      <div className="max-w-5xl relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
         <header className="mb-10 md:pl-12">
           <h1 className="text-8xl font-thin text-foreground">
             Experience
@@ -64,7 +64,7 @@ const Experience: React.FC = () => {
               opacity: [0, 1, 1, 0]
             }}
             transition={{ 
-              duration: 5,
+              duration: 2.5,
               ease: "linear",
               repeat: Infinity,
               repeatDelay: 1

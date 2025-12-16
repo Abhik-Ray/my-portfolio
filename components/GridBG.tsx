@@ -4,10 +4,10 @@ import { motion, useMotionValue, useScroll, useSpring, useTransform } from "fram
 import { useEffect, useRef } from "react";
 
 interface GridBGProps {
-    color?: 'primary' | 'foreground';
+    contactRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-export default function GridBG({ color = 'primary' }: GridBGProps) {
+export default function GridBG({ contactRef }: GridBGProps) {
     const svgRef = useRef<SVGSVGElement | null>(null);
 	const maskCircleRef = useRef<SVGCircleElement | null>(null);
     
@@ -20,8 +20,8 @@ export default function GridBG({ color = 'primary' }: GridBGProps) {
     const patternY = useSpring(mouseY, { stiffness: 50, damping: 30 });
     
     // Map mouse position to pattern offset (-50 to 50 for subtle movement)
-    const x = useTransform(patternX, [0, window.innerWidth], [-50, 50]);
-    const y = useTransform(patternY, [0, window.innerHeight], [-50, 50]);
+    const x = useTransform(patternX, [0, typeof window !== 'undefined' ? window.innerWidth : 1920], [-50, 50]);
+    const y = useTransform(patternY, [0, typeof window !== 'undefined' ? window.innerHeight : 1080], [-50, 50]);
     
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -38,15 +38,32 @@ export default function GridBG({ color = 'primary' }: GridBGProps) {
         offset: ["0vh", "100vh"]
     });
     
+    // Track scroll progress for Contact section
+    const { scrollYProgress: contactScrollProgress } = useScroll({
+        target: contactRef,
+        offset: ["start end", "start start"]
+    });
+    
     // Define the color values
     const primaryColor = "oklch(0.87 0.148144 202.8755)";
     const foregroundColor = "oklch(0.5972 0.2351 25.35)";
     
-    // Interpolate between colors based on scroll progress
+    // Combine both scroll progresses: use hero initially, then transition to contact
     const interpolatedColor = useTransform(
-        scrollYProgress,
-        [0, 1],
-        [primaryColor, foregroundColor]
+        [scrollYProgress, contactScrollProgress],
+        ([hero, contact]) => {
+            const contactVal = contact as number;
+            const heroVal = hero as number;
+            
+            if (contactVal > 0) {
+                // In contact transition zone
+                const t = Math.min(contactVal, 1);
+                return `color-mix(in oklch, ${foregroundColor} ${(1-t)*100}%, ${primaryColor} ${t*100}%)`;
+            }
+            // In hero zone
+            const t = Math.min(heroVal, 1);
+            return `color-mix(in oklch, ${primaryColor} ${(1-t)*100}%, ${foregroundColor} ${t*100}%)`;
+        }
     );
     
     return (
@@ -96,7 +113,7 @@ export default function GridBG({ color = 'primary' }: GridBGProps) {
                 </motion.pattern>
             </defs>
             {/* base background at 0.5 opacity (no mask) */}
-            <rect id="bgrect-base" width="100%" height="100%" fill="url(#h-lines)" opacity={0.4} />
+            <rect id="bgrect-base" width="100%" height="100%" fill="url(#h-lines)" opacity={0.6} />
             {/* top layer masked by circle at full opacity */}
             <rect id="bgrect-mask" width="100%" height="100%" fill="url(#h-lines)" mask="url(#cursorMask)" opacity={0.5} />
         </motion.svg>

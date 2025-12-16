@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
 import localFont from "next/font/local";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 const robotoCondensed = Roboto_Condensed({
   variable: "--font-roboto-condensed",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${robotoCondensed.variable} ${rajdhaniSemibold.className} antialiased grid-bg w-full h-full`}
       >
+        <SmoothScrolling />
         {children}
       </body>
     </html>

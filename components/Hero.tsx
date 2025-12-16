@@ -57,27 +57,27 @@ export default function Hero() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
       >
-        <Card className="bg-slate-900 border-2 border-cyan-400 rounded-none relative p-4 min-w-70 hero-card">
+        <Card className="bg-slate-900 border-2 border-cyan-400 rounded-none relative p-8 min-w-96 max-w-2xl hero-card">
           {/* Header section */}
-          <div className="mb-4">
-            <div className="text-cyan-400 text-sm font-bold mb-1">
+          <div className="mb-6">
+            <div className="text-cyan-400 text-base font-bold mb-1">
               DATA
             </div>
           </div>
 
           {/* Scan results with image */}
-          <div className="mb-4 flex items-start gap-6">
+          <div className="mb-6 flex items-start gap-8">
             <div className="flex-1">
-              <div className="text-gray-400 text-xs">
+              <div className="text-gray-400 text-sm">
                 SCAN RESULTS
               </div>
-              <div className="text-yellow-400 text-lg font-bold mb-1">
+              <div className="text-yellow-400 text-2xl font-bold mb-2">
                 <TypewriterText text="ABHIK RAY" delay={0.75} />
               </div>
-              <div className="text-gray-400 text-xs">
+              <div className="text-gray-400 text-sm">
                 AFFILIATION
               </div>
-              <div className="text-cyan-400 text-sm mb-3">
+              <div className="text-cyan-400 text-base mb-4">
                 <TypewriterText text="ARCADIS" delay={1.5} />
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function Hero() {
             {/* Profile Image */}
             <div className="shrink-0">
               <motion.div
-                className="w-16 h-24 border-2 border-cyan-400 overflow-hidden"
+                className="w-24 h-32 border-2 border-cyan-400 overflow-hidden"
                 initial={{ clipPath: "inset(0 0 100% 0)" }}
                 animate={{ clipPath: "inset(0 0 0% 0)" }}
                 transition={{ 
@@ -97,8 +97,8 @@ export default function Hero() {
                 <Image
                   src="/profile.jpg"
                   alt="Abhik Ray Profile"
-                  width={64}
-                  height={96}
+                  width={96}
+                  height={128}
                   className="w-full h-full object-cover filter grayscale contrast-125 brightness-60"
                 />
               </motion.div>
@@ -106,14 +106,14 @@ export default function Hero() {
           </div>
 
           {/* Main content */}
-          <div className="flex items-start gap-6">
+          <div className="flex items-start gap-8">
             <div>
-              <div className="text-gray-300 text-sm font-bold mb-2">
+              <div className="text-gray-300 text-base font-bold mb-2">
                 INFO
               </div>
             </div>
             <div className="flex-1">
-              <div className="text-cyan-400 text-sm text-right leading-relaxed">
+              <div className="text-cyan-400 text-base text-right leading-relaxed">
                 <TypewriterText text="Full Stack Developer" delay={2.8} />
                 <br />
                 <TypewriterText text="Focused on Elegant Interfaces" delay={3.8} />

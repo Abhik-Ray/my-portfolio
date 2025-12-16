@@ -30,14 +30,14 @@ const Projects: React.FC = () => {
     ];
 
     return (
-        <section className="w-full">
+        <section className="py-20">
             {projects.map((project, index) => {
                 const isEven = index % 2 === 0;
                 
                 return (
                     <div 
                         key={index}
-                        className="min-h-screen flex items-center justify-center px-8 md:px-16 lg:px-24 py-16"
+                        className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-16 mb-16 last:mb-0"
                     >
                         <div className={`w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
                             {/* Image Section */}

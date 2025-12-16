@@ -22,8 +22,8 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center">
-      <div className="w-fit">
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
         <header className="mb-10">
           <h1 className="text-8xl font-thin">Skills</h1>
         </header>
@@ -33,7 +33,7 @@ const Skills: React.FC = () => {
           {skills.map((skill) => (
             <motion.li
               key={skill.name}
-              className="aspect-square min-w-40 min-h-40 max-w-50 max-h-50 border border-foreground flex flex-col items-center justify-center p-4 gap-3 relative overflow-hidden modal-cut"
+              className="aspect-square min-w-40 min-h-40 max-w-50 max-h-50 border border-foreground flex flex-col items-center justify-center p-4 gap-3 relative overflow-hidden modal-cut bg-black"
               initial="initial"
               whileHover="hover"
             >
