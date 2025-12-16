@@ -42,7 +42,9 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Create .env file
-        run: echo "PAGES_BASE_PATH=/portfolio" > .env
+        run: |
+          echo "PAGES_BASE_PATH=/portfolio" > .env
+          echo "NEXT_PUBLIC_BASE_PATH=/portfolio" >> .env
 
       - name: Restore cache
         uses: actions/cache@v4
