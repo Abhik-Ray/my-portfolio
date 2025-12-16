@@ -2,8 +2,8 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
-import localFont from "next/font/local";
 import SmoothScrolling from "@/components/SmoothScrolling";
+import localFont from "next/font/local";
 
 const robotoCondensed = Roboto_Condensed({
   variable: "--font-roboto-condensed",
