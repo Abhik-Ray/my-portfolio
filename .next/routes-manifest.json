@@ -2,24 +2,29 @@
   "version": 3,
   "pages404": true,
   "caseSensitive": false,
-  "basePath": "/my-portfolio",
+  "basePath": "",
   "redirects": [
     {
-      "source": "/my-portfolio/",
-      "destination": "/my-portfolio",
-      "basePath": false,
+      "source": "/:file((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+)/",
+      "destination": "/:file",
       "internal": true,
       "priority": true,
+      "missing": [
+        {
+          "type": "header",
+          "key": "x-nextjs-data"
+        }
+      ],
       "statusCode": 308,
-      "regex": "^/my-portfolio/$"
+      "regex": "^(?:/((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+))/$"
     },
     {
-      "source": "/:path+/",
-      "destination": "/:path+",
+      "source": "/:notfile((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/\\.]+)",
+      "destination": "/:notfile/",
       "internal": true,
       "priority": true,
       "statusCode": 308,
-      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+      "regex": "^(?:/((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/\\.]+))$"
     }
   ],
   "headers": [],
