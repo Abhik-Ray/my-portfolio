@@ -26,15 +26,15 @@ const Skills: React.FC = () => {
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
         <header className="mb-10">
-          <h1 className="text-8xl font-thin">Skills</h1>
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-thin">Skills</h1>
         </header>
         {/* Skills component */}
         {skills.length === 0 ? null : (
-          <ul className="grid grid-cols-4 gap-20">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 lg:gap-20">
           {skills.map((skill) => (
             <motion.li
               key={skill.name}
-              className="aspect-square min-w-40 min-h-40 max-w-50 max-h-50 border border-foreground flex flex-col items-center justify-center p-4 gap-3 relative overflow-hidden modal-cut bg-black"
+              className="aspect-square w-full border border-foreground flex flex-col items-center justify-center p-3 md:p-4 gap-2 md:gap-3 relative overflow-hidden modal-cut bg-black"
               initial="initial"
               whileHover="hover"
             >
@@ -49,12 +49,12 @@ const Skills: React.FC = () => {
               />
               
               {/* Plus icons */}
-              <Plus className="absolute top-2 left-2 w-4 h-4 z-10" />
-              <Plus className="absolute top-2 right-2 w-4 h-4 z-10" />
-              <Plus className="absolute bottom-2 left-2 w-4 h-4 z-10" />
+              <Plus className="absolute top-1 left-1 md:top-2 md:left-2 w-3 h-3 md:w-4 md:h-4 z-10" />
+              <Plus className="absolute top-1 right-1 md:top-2 md:right-2 w-3 h-3 md:w-4 md:h-4 z-10" />
+              <Plus className="absolute bottom-1 left-1 md:bottom-2 md:left-2 w-3 h-3 md:w-4 md:h-4 z-10" />
               
               <div 
-                className="w-16 h-16 flex items-center justify-center z-10"
+                className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center z-10"
                 style={{
                   backgroundColor: 'var(--foreground)',
                   WebkitMaskImage: `url(${getImagePath(skill.logo)})`,
@@ -67,7 +67,7 @@ const Skills: React.FC = () => {
                   maskPosition: 'center',
                 }}
               />
-              <span className="text-center text-sm z-10">{skill.name}</span>
+              <span className="text-center text-xs md:text-sm z-10">{skill.name}</span>
             </motion.li>
           ))}
         </ul>

@@ -111,11 +111,23 @@ export default function GridBG({ contactRef }: GridBGProps) {
                         strokeWidth="0.5" 
                     />
                 </motion.pattern>
+                {/* Interlacing pattern for CRT screen effect */}
+                <pattern 
+                    id="interlace" 
+                    width="100%" 
+                    height="4" 
+                    patternUnits="userSpaceOnUse"
+                >
+                    <rect width="100%" height="2" fill="white" fillOpacity="0.05" />
+                    <rect y="2" width="100%" height="2" fill="transparent" />
+                </pattern>
             </defs>
             {/* base background at 0.5 opacity (no mask) */}
             <rect id="bgrect-base" width="100%" height="100%" fill="url(#h-lines)" opacity={0.6} />
             {/* top layer masked by circle at full opacity */}
             <rect id="bgrect-mask" width="100%" height="100%" fill="url(#h-lines)" mask="url(#cursorMask)" opacity={0.5} />
+            {/* Interlacing overlay for CRT screen effect */}
+            <rect id="interlace-overlay" width="100%" height="100%" fill="url(#interlace)" />
         </motion.svg>
         </div>
     );
