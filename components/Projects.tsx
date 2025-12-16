@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import React from "react";
+import { getImagePath } from "@/lib/getImagePath";
 import { motion } from "framer-motion";
 
 const Projects: React.FC = () => {
@@ -66,7 +67,7 @@ const Projects: React.FC = () => {
                                                 <div className="relative mx-auto w-full flex items-center justify-center" style={{ aspectRatio: `${project.aspect}` }}>
                                                     <div className="relative w-full h-full">
                                                         <Image
-                                                            src={img}
+                                                            src={getImagePath(img)}
                                                             alt={`${project.title} - ${imgIndex + 1}`}
                                                             fill
                                                             className="object-contain border-foreground border-2"

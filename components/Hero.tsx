@@ -10,6 +10,7 @@ import {
 } from "./ui/card";
 
 import Image from "next/image";
+import { getImagePath } from "@/lib/getImagePath";
 import { motion } from "framer-motion";
 
 // Typewriter component for typing effect
@@ -95,7 +96,7 @@ export default function Hero() {
                 }}
               >
                 <Image
-                  src="/profile.jpg"
+                  src={getImagePath("/profile.jpg")}
                   alt="Abhik Ray Profile"
                   width={96}
                   height={128}
