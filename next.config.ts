@@ -1,12 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+module.exports = {
   output: "export",
+  basePath: "/my-portfolio",
+  assetPrefix: "/my-portfolio",
   images: {
     unoptimized: true,
   },
-  basePath: '/my-portfolio',
-  assetPrefix: '/my-portfolio',
 };
-
-export default nextConfig;
