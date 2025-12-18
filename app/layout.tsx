@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
 import SmoothScrolling from "@/components/SmoothScrolling";
@@ -32,6 +33,7 @@ export default function RootLayout({
         <SmoothScrolling />
         {children}
       </body>
+      <GoogleAnalytics gaId="G-2VJ52694CM" />
     </html>
   );
 }
