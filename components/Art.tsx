@@ -34,7 +34,7 @@ const ArtworkCard = memo(({ artwork, onClick }: { artwork: typeof artworks[numbe
         style={{ willChange: 'transform' }}
     >
         {/* Neon Border Effect */}
-        <div className="absolute inset-0 border-2 border-transparent group-hover:border-foreground transition-all duration-300 z-10 pointer-events-none group-hover:shadow-[0_0_30px_hsl(var(--foreground)/0.6),inset_0_0_30px_hsl(var(--foreground)/0.1)]" style={{ willChange: 'border-color, box-shadow' }}></div>
+        <div className="absolute inset-0 border-2 border-transparent group-hover:border-foreground transition-all duration-300 z-20 pointer-events-none group-hover:shadow-[0_0_30px_hsl(var(--foreground)/0.6),inset_0_0_30px_hsl(var(--foreground)/0.1)]" style={{ willChange: 'border-color, box-shadow' }}></div>
         
         {/* Corner Accents */}
         <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-foreground/50 z-10 group-hover:w-6 group-hover:h-6 transition-all duration-300"></div>
