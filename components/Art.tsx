@@ -111,7 +111,7 @@ const Art: React.FC = () => {
                     className="relative"
                 >
                     <h2 className="text-6xl md:text-8xl font-bold text-foreground mb-4">
-                        BLENDER SHOWCASE
+                        BLENDER `SHOWCASE
                     </h2>
                     <div className="h-1 w-full bg-foreground shadow-[0_0_20px_hsl(var(--foreground)/0.5)]"></div>
                 </motion.div>
