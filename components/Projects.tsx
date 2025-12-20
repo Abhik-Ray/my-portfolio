@@ -1,37 +1,52 @@
 'use client'
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import React, { useMemo } from "react";
 
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import React from "react";
 import { getImagePath } from "@/lib/getImagePath";
 import { motion } from "framer-motion";
 
+// Move static data outside component to prevent re-creation on every render
+const projects = [
+    {
+        "title": 'Skin Cancer Detection using CNN',
+        "text": "A CNN-based system to classify skin lesion images with a simple web interface for image upload and result visualization.",
+        "images": ['/projects/CNN1.png', '/projects/CNN2.png', '/projects/CNN3.png'],
+        "aspect": "960/546",
+    },
+    {
+        "title": 'My Movie List',
+        "text": "A cross-platform mobile app using Flutter with a clean, responsive UI and core application logic.",
+        "images": ['/projects/MML1.png', '/projects/MML2.png', '/projects/MML3.png', '/projects/MML4.png'],
+        "aspect": "270/540",
+    },
+    {
+        "title": 'React Dead Simple Stopwatch Hook',
+        "text": "A simple and reusable React hook for creating a stopwatch.",
+        "images": ['/projects/NPM1.png'],
+        "aspect": "1000/640"
+    }
+] as const;
+
 const Projects: React.FC = () => {
-    const projects = [
-        {
-            "title": 'Skin Cancer Detection using CNN',
-            "text": "A CNN-based system to classify skin lesion images with a simple web interface for image upload and result visualization.",
-            "images": ['/projects/CNN1.png', '/projects/CNN2.png', '/projects/CNN3.png'],
-            "aspect": "960/546",
-        },
-        {
-            "title": 'My Movie List',
-            "text": "A cross-platform mobile app using Flutter with a clean, responsive UI and core application logic.",
-            "images": ['/projects/MML1.png', '/projects/MML2.png', '/projects/MML3.png', '/projects/MML4.png'],
-            "aspect": "270/540",
-        },
-        {
-            "title": 'React Dead Simple Stopwatch Hook',
-            "text": "A simple and reusable React hook for creating a stopwatch.",
-            "images": ['/projects/NPM1.png'],
-            "aspect": "1000/640"
-        }
-    ];
+    // Memoize autoplay plugin once
+    const autoplayPlugin = useMemo(() => 
+        Autoplay({
+            delay: 3000,
+            stopOnInteraction: true,
+            stopOnMouseEnter: true,
+        }), []
+    );
 
     return (
         <section className="py-20">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+                <header className="mb-10">
+                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-thin">Projects</h1>
+                </header>
+            </div>
             {projects.map((project, index) => {
                 const isEven = index % 2 === 0;
                 
@@ -40,7 +55,7 @@ const Projects: React.FC = () => {
                         key={index}
                         className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-16 mb-16 last:mb-0"
                     >
-                        <div className={`w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+                        <div className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
                             {/* Image Section */}
                             <motion.div
                                 initial={{ opacity: 0, x: isEven ? -50 : 50 }}
@@ -52,13 +67,7 @@ const Projects: React.FC = () => {
                                 <Carousel 
                                     className="w-full px-16" 
                                     opts={{ loop: true }} 
-                                    plugins={[
-                                        Autoplay({
-                                            delay: 3000,
-                                            stopOnInteraction: true,
-                                            stopOnMouseEnter: true,
-                                        })
-                                    ]}
+                                    plugins={[autoplayPlugin]}
                                     style={project.aspect === "270/540" ? { maxWidth: "calc(270px + 8rem)", margin: "0 auto" } : {}}
                                 >
                                     <CarouselContent>

@@ -1,11 +1,12 @@
 "use client";
 
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 
 import Image from 'next/image';
 import { getImagePath } from '@/lib/getImagePath';
 
+// Move static data outside component to prevent re-creation on every render
 const artworks = [
     { id: 1, src: '/Art/cyberpunk-bedroom.png', title: 'Cyberpunk Bedroom', category: 'Environment' },
     { id: 2, src: '/Art/assassins_creed_neon.png', title: 'Assassin\'s Creed Neon', category: 'Wallpaper' },
@@ -22,17 +23,18 @@ const artworks = [
     { id: 13, src: '/Art/zelda.png', title: 'Zelda', category: 'Wallpaper' },
     { id: 14, src: '/Art/Tai.png', title: 'Tai', category: 'Model' },
     { id: 15, src: '/Art/Render1-200-1080.png', title: 'Swedish Stuga', category: 'Environment' },
-];
+] as const;
 
-const categories = ['All', 'Environment', 'Wallpaper', 'Character', 'Model'];
+const categories = ['All', 'Environment', 'Wallpaper', 'Character', 'Model'] as const;
 
-const ArtworkCard = memo(({ artwork, index, onClick }: { artwork: typeof artworks[0]; index: number; onClick: () => void }) => (
+const ArtworkCard = memo(({ artwork, onClick }: { artwork: typeof artworks[number]; onClick: () => void }) => (
     <div
         onClick={onClick}
         className="group cursor-pointer relative overflow-hidden"
+        style={{ willChange: 'transform' }}
     >
         {/* Neon Border Effect */}
-        <div className="absolute inset-0 border-2 border-transparent group-hover:border-foreground transition-all duration-300 z-10 pointer-events-none group-hover:shadow-[0_0_30px_hsl(var(--foreground)/0.6),inset_0_0_30px_hsl(var(--foreground)/0.1)]"></div>
+        <div className="absolute inset-0 border-2 border-transparent group-hover:border-foreground transition-all duration-300 z-10 pointer-events-none group-hover:shadow-[0_0_30px_hsl(var(--foreground)/0.6),inset_0_0_30px_hsl(var(--foreground)/0.1)]" style={{ willChange: 'border-color, box-shadow' }}></div>
         
         {/* Corner Accents */}
         <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-foreground/50 z-10 group-hover:w-6 group-hover:h-6 transition-all duration-300"></div>
@@ -85,36 +87,27 @@ const Art: React.FC = () => {
         [filteredArtworks, selectedId]
     );
 
-    const goToPrevious = (e: React.MouseEvent) => {
+    const goToPrevious = useCallback((e: React.MouseEvent) => {
         e.stopPropagation();
         if (selectedIndex > 0) {
             setSelectedId(filteredArtworks[selectedIndex - 1].id);
         }
-    };
+    }, [selectedIndex, filteredArtworks]);
 
-    const goToNext = (e: React.MouseEvent) => {
+    const goToNext = useCallback((e: React.MouseEvent) => {
         e.stopPropagation();
         if (selectedIndex < filteredArtworks.length - 1) {
             setSelectedId(filteredArtworks[selectedIndex + 1].id);
         }
-    };
+    }, [selectedIndex, filteredArtworks]);
 
     return (
-        <section className="py-20 px-4 md:px-8 relative">
+        <section className="py-20 relative">
             {/* Cyberpunk Header */}
-            <div className="max-w-7xl mx-auto mb-16">
-                <motion.div
-                    initial={{ opacity: 0, y: -50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="relative"
-                >
-                    <h2 className="text-6xl md:text-8xl font-bold text-foreground mb-4">
-                        BLENDER `SHOWCASE
-                    </h2>
-                    <div className="h-1 w-full bg-foreground shadow-[0_0_20px_hsl(var(--foreground)/0.5)]"></div>
-                </motion.div>
+            <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 mb-16">
+                <header className="mb-10">
+                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-thin">Blender Showcase</h1>
+                </header>
 
                 {/* Category Filters */}
                 <motion.div
@@ -141,7 +134,7 @@ const Art: React.FC = () => {
             </div>
 
             {/* Art Grid */}
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredArtworks.map((artwork, index) => (
                     <motion.div
                         key={artwork.id}
@@ -151,8 +144,7 @@ const Art: React.FC = () => {
                         viewport={{ once: true, margin: "100px" }}
                     >
                         <ArtworkCard 
-                            artwork={artwork} 
-                            index={index}
+                            artwork={artwork}
                             onClick={() => setSelectedId(artwork.id)}
                         />
                     </motion.div>
