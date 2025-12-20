@@ -1,5 +1,6 @@
 "use client";
 
+import Art from "@/components/Art";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import GridBG from "@/components/GridBG";
@@ -22,6 +23,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Projects />
+      <Art />
       <Contact ref={contactRef} />
     </main>
   );
