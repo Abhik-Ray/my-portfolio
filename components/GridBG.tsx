@@ -16,8 +16,8 @@ export default function GridBG({ contactRef }: GridBGProps) {
     const mouseY = useMotionValue(0);
     
     // Smooth spring animation for pattern offset
-    const patternX = useSpring(mouseX, { stiffness: 50, damping: 30 });
-    const patternY = useSpring(mouseY, { stiffness: 50, damping: 30 });
+    const patternX = useSpring(mouseX, { stiffness: 20, damping: 110 });
+    const patternY = useSpring(mouseY, { stiffness: 20, damping: 110 });
     
     // Map mouse position to pattern offset (-50 to 50 for subtle movement)
     const x = useTransform(patternX, [0, typeof window !== 'undefined' ? window.innerWidth : 1920], [-50, 50]);
@@ -46,7 +46,7 @@ export default function GridBG({ contactRef }: GridBGProps) {
     
     // Define the color values
     const primaryColor = "oklch(0.87 0.148144 202.8755)";
-    const foregroundColor = "oklch(0.5972 0.2351 25.35)";
+    const foregroundColor = "oklch(0.3 0.148144 202.8755)";
     
     // Combine both scroll progresses: use hero initially, then transition to contact
     const interpolatedColor = useTransform(
@@ -118,7 +118,7 @@ export default function GridBG({ contactRef }: GridBGProps) {
                     height="4" 
                     patternUnits="userSpaceOnUse"
                 >
-                    <rect width="100%" height="2" fill="white" fillOpacity="0.05" />
+                    <rect width="100%" height="2" fill="white" fillOpacity="0.03" />
                     <rect y="2" width="100%" height="2" fill="transparent" />
                 </pattern>
             </defs>

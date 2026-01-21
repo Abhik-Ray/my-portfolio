@@ -80,7 +80,7 @@ const SkillItem = memo(({ skill }: { skill: (typeof skills)[number] }) => (
   >
     {/* Fill animation overlay */}
     <motion.div
-      className="absolute inset-0 bg-[oklch(0.5972_0.2351_25.35/0.2)] origin-left"
+      className="absolute inset-0 bg-[oklch(0.9_0.15_203/0.2)] origin-left"
       variants={{
         initial: { scaleX: 0 },
         hover: { scaleX: 1 },
