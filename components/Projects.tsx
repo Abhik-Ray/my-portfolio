@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import React, { useMemo } from "react";
 
 import Autoplay from "embla-carousel-autoplay";
+import { Badge } from "./ui/badge";
 import Bus from '@/public/projects/bus.svg';
 import Cafe from '@/public/projects/cafe.svg';
 import Desk from '@/public/projects/desk.svg';
@@ -188,6 +189,9 @@ const Projects: React.FC = () => {
                 </h2>
                 <p className="text-lg md:text-xl leading-relaxed">
                   {project.text}
+                </p>
+                <p className="text-xl">
+                {project.tech.map(tech => <Badge key={tech} variant={"default"} className="mx-2 rounded-none">{tech}</Badge>)}
                 </p>
               </motion.div>
             </div>
