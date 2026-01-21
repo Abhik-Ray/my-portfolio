@@ -1,6 +1,18 @@
 import type { NextConfig } from "next";
 
+// This pulls the variable from the .env file you created in the workflow
+const basePath = process.env.PAGES_BASE_PATH || '';
+
 const nextConfig: NextConfig = {
+  // --- REQUIRED FOR GITHUB PAGES ---
+  output: "export",          // Tells Next.js to generate static HTML files
+  basePath: basePath,        // Tells Next.js to load assets from /portfolio, not /
+  trailingSlash: true,       // Creates folder structure /about/index.html instead of /about.html
+  images: {
+    unoptimized: true,       // Required because GitHub Pages cannot optimize images on the fly
+  },
+  
+  // --- YOUR NEW SVG CONFIG ---
   webpack(config) {
     // 1. Grab the existing rule that handles SVG imports
     // @ts-expect-error - rules is a generic array
