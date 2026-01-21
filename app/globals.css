@@ -115,7 +115,7 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    cursor: url('/cursor.png') 0 0, auto !important;
+    cursor: url('/vectors/cursor.png') 18 18, auto !important;
   }
   body {
     @apply bg-background text-foreground;
